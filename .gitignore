@@ -1,0 +1,79 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+.report/
+
+# Node.js
+node_modules/
+dist/
+dist-ssr/
+*.local
+*.tsbuildinfo
+.next/ # Next.js build output
+.nuxt/ # Nuxt.js build output
+.output/ # Nuxt 3 build output
+.parcel-cache/ # Parcel build cache
+.vite/ # Vite build output
+.svelte-kit/ # SvelteKit build output
+.turbo/ # Turborepo cache
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Directory for compiled output
+build/
+coverage/
+
+# Dependencies
+.npm
+.yarn-cache/
+.pnp/
+.pnp.js
+.pnpm/
+
+# Environment variables
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.bak
+
+# macOS specific files
+.DS_Store
+
+# Thumbnails
+.thumbnails/
+
+# Miscellaneous
+*.swp
+*.swo
+*.un~
+*.bak
+*.gz
+*.tgz
+
+# Optional: if you have local test files
+*.test.js.snap
+*.spec.js.snap
+
+# If you have an Apollo GraphQL codegen config
+codegen.yml

@@ -1,0 +1,425 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+/* Google Fonts Import (for a more modern font) */
+/* You will also need to add this to your public/index.html inside the <head> tag:
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+If you cannot modify index.html, we'll revert to a system font, but Poppins is a good choice for modern UIs.
+*/
+
+:root {
+    /* Primary brand colors - inspired by 99acres/MagicBricks */
+    --primary-blue: #0056b3; /* Darker blue for primary actions */
+    --primary-blue-light: #007bff; /* Lighter blue for general use */
+    --accent-orange: #ff9900; /* For highlights, warnings */
+    --accent-green: #28a745; /* For success/positive actions */
+
+    /* Neutral colors */
+    --gray-dark: #343a40;
+    --gray-medium: #6c757d;
+    --gray-light: #f8f9fa;
+    --white: #ffffff;
+    --black: #212529;
+
+    /* Spacing units - based on a 4px or 8px grid (adjust as needed) */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Use Poppins if linked in index.html, otherwise a clean sans-serif */
+    font-family: 'Poppins', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6; /* Improve readability */
+    -webkit-font-smoothing: antialiased; /* Better font rendering */
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%; /* Use min-height for body to ensure content pushes footer */
+    scroll-behavior: smooth;
+    background-color: var(--gray-light); /* Light background for the whole app */
+    color: var(--black);
+}
+
+a {
+    color: var(--primary-blue-light); /* Link color */
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+a:hover {
+    color: var(--primary-blue);
+    text-decoration: underline;
+}
+
+/* Base styles for common elements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--gray-dark);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: var(--spacing-sm);
+}
+
+input,
+select,
+textarea {
+    border: 1px solid #ced4da; /* Bootstrap default border color */
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-md); /* Add margin-bottom for better spacing in forms */
+    border-radius: 0.25rem; /* Bootstrap default border-radius */
+    transition: all 0.2s ease-in-out;
+    width: 100%; /* Make inputs take full available width */
+    max-width: 400px; /* Limit max width for readability */
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Bootstrap focus shadow */
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    border-radius: 0.25rem;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+/* --- Layout Specific Styles --- */
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    padding: var(--spacing-xl); /* Add padding to content area */
+    max-width: 1200px; /* Limit content width for better readability */
+    margin: 0 auto; /* Center the content */
+    width: 100%;
+}
+
+/* Home Body - Carousel adjustments */
+.home-body {
+    height: 85vh; /* Adjust height for hero section */
+    overflow: hidden;
+    position: relative;
+    display: flex; /* Ensure flex for centering inner content */
+    align-items: center; /* Vertically center carousel content */
+    justify-content: center; /* Horizontally center carousel content */
+}
+
+.home-body .carousel {
+    max-height: 100%;
+    width: 100%; /* Ensure carousel takes full width */
+}
+
+.home-body .carousel .carousel-item {
+    height: 85vh; /* Match parent height */
+    display: flex; /* For image centering */
+    align-items: center;
+    justify-content: center;
+    background-color: var(--gray-dark); /* Fallback background for carousel item */
+}
+
+.home-body .carousel .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area, not just contain */
+    /* background-size: cover; is redundant with object-fit: cover */
+}
+
+/* Content Home (Hero Text) */
+.content-home {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Adjust for perfect centering */
+    text-align: center;
+    color: var(--white); /* Text color for overlay */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Add subtle shadow for readability */
+    z-index: 10; /* Ensure it's above the carousel */
+    background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent background */
+    padding: var(--spacing-xl);
+    border-radius: 0.5rem;
+    max-width: 80%; /* Limit width on larger screens */
+}
+
+.content-home p {
+    font-size: 2.8rem; /* Larger, more impactful font size */
+    font-weight: 700; /* Bolder */
+    color: var(--white); /* White for contrast */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+/* Filter Container - Modernized */
+.filter-container {
+    width: 100%;
+    /* height: 10vh; */ /* Let content define height */
+    padding: var(--spacing-md) var(--spacing-lg); /* More generous padding */
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    align-items: center;
+    justify-content: center; /* Center items for clean look */
+    margin-bottom: var(--spacing-xl); /* Increased margin-bottom */
+    background-color: var(--white); /* White background for the filter bar */
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); /* Subtle shadow */
+}
+
+.filter-container input,
+.filter-container select { /* Explicitly target within filter-container */
+    border: 1px solid var(--gray-medium); /* Lighter border */
+    padding: var(--spacing-sm); /* Slightly less padding */
+    margin: var(--spacing-sm); /* Consistent margin around items */
+    border-radius: 0.3rem; /* Slightly more rounded */
+    flex-grow: 1; /* Allow items to grow */
+    min-width: 150px; /* Minimum width before wrapping */
+}
+
+.filter-container button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: 0.3rem;
+    border: none;
+    font-weight: 600;
+    margin: var(--spacing-sm);
+}
+
+.filter-container button:hover {
+    background-color: var(--primary-blue-light);
+}
+
+/* Property Content - Grid layout for cards */
+.property-content {
+    display: grid; /* Use CSS Grid for better control */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: var(--spacing-xl); /* Gap between grid items */
+    justify-content: center; /* Center items if they don't fill a row */
+    padding: var(--spacing-md); /* Some padding around the grid */
+}
+
+/* Card - Modernized */
+.card {
+    border: none; /* Remove default Bootstrap border */
+    border-radius: 0.75rem; /* More rounded corners */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* More pronounced, but soft shadow */
+    overflow: hidden; /* Ensure content respects border-radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+    background-color: var(--white);
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card .card-body {
+    padding: var(--spacing-lg); /* More internal padding */
+}
+
+.card .card-body .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+.card .card-body .card-title img {
+    width: 100%;
+    height: 200px; /* Increase image height for better visual impact */
+    object-fit: cover; /* Ensure images fill their space nicely */
+    border-radius: 0.5rem; /* Slightly rounded image corners */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Chat Container - Modernized */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Should be controlled by parent container */
+    max-width: 600px; /* Limit chat width */
+    margin: var(--spacing-xl) auto; /* Center chat container */
+    background-color: var(--white);
+    border-radius: 0.75rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* For scrolling messages */
+}
+
+.chat-container h1 {
+    font-size: 1.8rem; /* Slightly larger */
+    text-align: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.message-window {
+    flex: 1; /* Allow it to grow */
+    overflow-y: auto; /* Changed to overflow-y for vertical scrolling */
+    padding: var(--spacing-md);
+    width: 100%;
+    max-height: 400px; /* Increased max height for better chat experience */
+    height: auto; /* Allow height to adjust */
+    border: none; /* Remove border */
+    background-color: var(--gray-light); /* Light background for message window */
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.message {
+    background-color: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    word-wrap: break-word; /* Ensure long words break */
+    max-width: 80%; /* Messages shouldn't span full width */
+}
+
+.message.sent {
+    background-color: var(--primary-blue-light);
+    color: var(--white);
+    margin-left: auto; /* Align sent messages to the right */
+}
+
+.message.received {
+    background-color: #e0e0e0;
+    color: var(--black);
+    margin-right: auto; /* Align received messages to the left */
+}
+
+
+.input-container {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-top: 1px solid #eee;
+    background-color: var(--white);
+}
+
+.input-container textarea {
+    width: 100%; /* Take full width minus button */
+    flex: 1;
+    min-height: 40px; /* Minimum height */
+    max-height: 100px; /* Max height before scrolling */
+    padding: var(--spacing-sm);
+    margin-right: var(--spacing-sm);
+    border: 1px solid var(--gray-medium); /* Border */
+    border-radius: 0.5rem;
+    background-color: var(--gray-light);
+    resize: vertical; /* Allow vertical resize */
+}
+
+.input-container button {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--white);
+    font-size: 1rem; /* Adjust font size */
+    border: none;
+    background-color: var(--primary-blue);
+    border-radius: 0.5rem; /* Rounded button */
+    width: auto; /* Let content define width */
+    height: auto; /* Let content define height */
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.input-container button:hover {
+    background-color: var(--primary-blue-light);
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .content {
+        padding: var(--spacing-md);
+    }
+
+    .home-body {
+        height: 70vh; /* Adjust height for smaller screens */
+    }
+
+    .home-body .carousel .carousel-item {
+        height: 70vh;
+    }
+
+    .content-home p {
+        font-size: 2rem; /* Smaller font on smaller screens */
+    }
+
+    .filter-container {
+        flex-direction: column; /* Stack filters vertically */
+        padding: var(--spacing-md);
+    }
+
+    .filter-container input,
+    .filter-container select,
+    .filter-container button {
+        width: 100%; /* Full width on small screens */
+        margin: var(--spacing-sm) 0; /* Adjust vertical margins */
+        max-width: none; /* Remove max-width constraint */
+    }
+
+    .property-content {
+        grid-template-columns: 1fr; /* Single column on very small screens */
+        gap: var(--spacing-lg);
+    }
+
+    .card .card-body .card-title img {
+        height: 180px; /* Adjust image height on smaller screens */
+    }
+
+    .chat-container {
+        margin: var(--spacing-md) auto;
+        width: 95%;
+    }
+
+    .message-window {
+        max-height: 300px; /* Adjust message window height */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .content-home p {
+        font-size: 1.5rem;
+    }
+
+    .home-body {
+        height: 60vh;
+    }
+
+    .home-body .carousel .carousel-item {
+        height: 60vh;
+    }
+
+    .card .card-body .card-title img {
+        height: 150px;
+    }
+}
+
+/* Utility Classes (if needed in your JSX) */
+.text-center { text-align: center; }
+.my-4 { margin-top: var(--spacing-xl); margin-bottom: var(--spacing-xl); }
+.p-4 { padding: var(--spacing-xl); }
+.shadow-sm { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
+
+/* Remove any stray Ant Design comments if they were accidentally included */
+/* You had some Ant Design JSX commented out in your CSS, ensure it's removed. */
+/* If you use Ant Design components, you'll need to adjust their styling via their props or custom themes,
+   as direct CSS here might be overridden by Ant Design's own styles. */
