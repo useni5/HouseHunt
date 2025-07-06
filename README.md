@@ -25,35 +25,95 @@
 
 ---
 
-## 🖥️ Screenshots
-
-> Add your screenshots in the `assets/` folder and update paths here.
-
-| Home Page | Property Cards | Login Page |
-|-----------|----------------|-------------|
-| ![](assets/home.png) | ![](assets/cards.png) | ![](assets/login.png) |
-
----
 
 ## 🔧 Project Structure
 
 HouseHunt/
 ├── backend/
-│ ├── controllers/
-│ ├── models/
-│ ├── routes/
-│ ├── index.js
-│ └── .env
+│   ├── config/
+│   │   └── connect.js
+│
+│   ├── controllers/
+│   │   ├── adminController.js
+│   │   ├── ownerController.js
+│   │   └── userController.js
+│
+│   ├── middlewares/
+│   │   └── authMiddleware.js
+│
+│   ├── routes/
+│   │   ├── adminRoutes.js
+│   │   ├── ownerRoutes.js
+│   │   └── userRoutes.js
+│
+│   ├── schemas/
+│   │   ├── bookingModel.js
+│   │   ├── propertyModel.js
+│   │   └── userModel.js
+│
+│   ├── uploads/
+│   │   ├── Blank diagram.jpeg
+│   │   └── pexels-binyaminmellish-106399.jpg
+│
+│   ├── .env
+│   ├── .gitignore
+│   ├── index.js
+│   ├── package.json
+│   └── package-lock.json
+│
 ├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── App.jsx
-│ │ └── main.jsx
-│ └── public/
-├── README.md
-├── package.json
-└── .gitignore
+│   ├── node_modules/
+│
+│   ├── public/
+│   │   └── index.html
+│
+│   ├── src/
+│   │   ├── images/
+│   │   │   ├── p.jpg
+│   │   │   ├── p0.jpg
+│   │   │   ├── p1.jpg
+│   │   │   ├── p2.jpg
+│   │   │   ├── p3.jpg
+│   │   │   ├── p4.jpg
+│   │   │   ├── p5.jpg
+│   │   │   ├── p6.jpg
+│   │   │   ├── p7.jpg
+│   │   │   ├── p8.jpg
+│   │   │   ├── p9.jpg
+│   │   │   └── p10.jpg
+│   │
+│   │   ├── modules/
+│   │   │   ├── admin/
+│   │   │   │   ├── AdminHome.jsx
+│   │   │   │   ├── AllBookings.jsx
+│   │   │   │   ├── AllProperty.jsx
+│   │   │   │   └── AllUsers.jsx
+│   │   │
+│   │   │   ├── common/
+│   │   │   │   ├── ForgotPassword.jsx
+│   │   │   │   ├── Home.jsx
+│   │   │   │   ├── Login.jsx
+│   │   │   │   └── Register.jsx
+│   │   │
+│   │   │   └── user/
+│   │   │       ├── Owner/
+│   │   │       │   ├── AddProperty.jsx
+│   │   │       │   ├── AllBookings.jsx
+│   │   │       │   ├── AllProperties.jsx
+│   │   │       │   └── OwnerHome.jsx
+│   │   │
+│   │   │       └── renter/
+│   │   │           ├── AllProperties.jsx
+│   │   │           ├── RenterHome.jsx
+│   │   │           └── AllPropertiesCards.jsx
+│
+│   ├── App.css
+│   ├── App.js
+│   ├── index.js
+│   ├── .gitignore
+│   ├── package.json
+│   ├── package-lock.json
+│   └── README.md
 
 yaml
 Copy code
