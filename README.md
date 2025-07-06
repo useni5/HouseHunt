@@ -1,70 +1,114 @@
-# Getting Started with Create React App
+# 🏡 HouseHunt – Full Stack Real Estate Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**HouseHunt** is a modern fullstack web application for browsing and managing real estate listings. It features user authentication, property cards, responsive UI, and seamless frontend-backend integration.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Tech Stack
 
-### `npm start`
+- **Frontend**: React, MUI (Material UI), React Router
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB Atlas
+- **Authentication**: JWT-based login/register with secure routing
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🌟 Features
 
-### `npm test`
+- 🔐 User authentication (register, login, forgot password)
+- 🏘️ Property listing with detailed cards
+- 📱 Responsive design with modern UI (MUI)
+- 🔎 View all properties in a clean layout
+- ➕ Add new property (admin/owner feature)
+- 🔄 Persistent user sessions via JWT
+- 💬 Flash messages / notifications (optional)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 🖥️ Screenshots
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> Add your screenshots in the `assets/` folder and update paths here.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Home Page | Property Cards | Login Page |
+|-----------|----------------|-------------|
+| ![](assets/home.png) | ![](assets/cards.png) | ![](assets/login.png) |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🔧 Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+HouseHunt/
+├── backend/
+│ ├── controllers/
+│ ├── models/
+│ ├── routes/
+│ ├── index.js
+│ └── .env
+├── frontend/
+│ ├── src/
+│ │ ├── components/
+│ │ ├── pages/
+│ │ ├── App.jsx
+│ │ └── main.jsx
+│ └── public/
+├── README.md
+├── package.json
+└── .gitignore
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+yaml
+Copy code
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📦 Installation & Setup
 
-## Learn More
+### 1. Clone the repository
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+git clone https://github.com/yourusername/househunt.git
+cd househunt
+2. Setup the Backend
+bash
+Copy code
+cd backend
+npm install
+Create a .env file:
+ini
+Copy code
+PORT=8001
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+bash
+Copy code
+npm run dev
+3. Setup the Frontend
+bash
+Copy code
+cd ../frontend
+npm install
+npm start
+The frontend runs on http://localhost:3000
+The backend runs on http://localhost:8001
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+🌐 Deployment
+You can deploy this stack on:
 
-### Code Splitting
+Frontend: Vercel / Netlify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Backend: Render / Railway / Cyclic / Fly.io
 
-### Analyzing the Bundle Size
+Database: MongoDB Atlas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Update CORS and .env variables accordingly before deployment.
 
-### Making a Progressive Web App
+🧠 Future Improvements
+🗺️ Add location-based filtering
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+📧 Email verification
 
-### Advanced Configuration
+📊 Admin dashboard
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+🔍 Full-text search
 
-### Deployment
+📱 Mobile-first PWA
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
