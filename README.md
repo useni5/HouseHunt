@@ -27,6 +27,8 @@
 
 ## 📁 Project Structure
 
+
+<pre>
 HouseHunt/
 ├── backend/
 │   ├── controllers/
@@ -45,6 +47,7 @@ HouseHunt/
 ├── .gitignore
 ├── README.md
 └── package.json
+</pre>
 
 ---
 
